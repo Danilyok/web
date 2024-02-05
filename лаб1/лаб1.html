@@ -1,0 +1,74 @@
+<html>
+<head>
+<link rel="icon" href="Список.png" type="image/x-icon">
+  <title>Список дел</title>
+<style>
+.delete-button {
+color: red;
+cursor: pointer;
+}
+</style>
+</head>
+<body>
+  <h1>Список дел</h1>
+<input type="text" id="new-item" placeholder="Новый элемент списка">
+<button onclick="createItem()">Создать</button>
+<button onclick="clearList()">Очистить всё</button>
+<ol id="todo-list">
+<li><input type="checkbox" onclick="toggleItem(this)">Почесать кошку <sub>от 24.08.2023</sub> <span class="delete-button" onclick="deleteItem(this)">❌</span></li>
+<li><input type="checkbox" onclick="toggleItem(this)">Полить картошку <sub>от 04.05.2022</sub> <span class="delete-button" onclick="deleteItem(this)">❌</span></li>
+<li><input type="checkbox" onclick="toggleItem(this)">Сложить в лукошко <sub>от 14.05.2022</sub> <span class="delete-button" onclick="deleteItem(this)">❌</span></li>
+</ol>
+<hr>
+<footer>
+<p>Copyright &copy;</p>
+</footer>
+<script>
+function createItem() {
+let newItem = document.getElementById("new-item").value;
+if (newItem.trim() !== "") {
+let list = document.getElementById("todo-list");
+let li = document.createElement("li");
+
+let checkbox = document.createElement("input");
+checkbox.type = "checkbox";
+checkbox.onclick = function() {
+toggleItem(this);
+};
+
+li.appendChild(checkbox);
+
+li.appendChild(document.createTextNode(" " + newItem));
+
+let deleteButton = document.createElement("span");
+deleteButton.className = "delete-button";
+deleteButton.textContent = "❌";
+deleteButton.onclick = function() {
+deleteItem(this);
+};
+
+li.appendChild(deleteButton);
+list.appendChild(li);
+document.getElementById("new-item").value = "";
+}
+}
+
+function deleteItem(element) {
+element.parentNode.remove();
+}
+
+function toggleItem(checkbox) {
+let li = checkbox.parentNode;
+if (checkbox.checked) {
+li.style.textDecoration = "line-through";
+} else {
+li.style.textDecoration = "none";
+}
+}
+function clearList() {
+let list = document.getElementById("todo-list");
+list.innerHTML = "";
+}
+</script>
+</body>
+</html>
