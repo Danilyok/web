@@ -1,0 +1,102 @@
+body {
+    background-color: #5F9EA0; /* темно-бирюзовый */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#newItemInput {
+    width: 200px;
+    height: 40px;
+    border: none;
+    border-radius: 0; 
+}
+
+#addItemBtn, #clearAllBtn {
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 0; 
+    margin: 0; 
+}
+
+#addItemBtn {
+    background-color: lightgray;
+}
+
+#clearAllBtn {
+    background-color: red;
+    color: white;
+}
+
+#addItemBtn:hover, #clearAllBtn:hover {
+    filter: brightness(0.8);
+}
+
+#todoList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.todoItem {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 0;
+    width: 300px; 
+    margin: 0 auto; 
+    position: relative; 
+    text-align: left; 
+}
+
+.todoItem .deleteBtn {
+    position: absolute; 
+    right: 10px; 
+    color: white; 
+}
+
+.todoItem:nth-child(1) {
+    background-color: gray;
+    text-decoration: line-through;
+}
+
+.todoItem:nth-child(1) input[type="checkbox"] {
+    visibility: hidden;
+}
+
+.todoItem:nth-child(1) input[type="checkbox"] + span::before {
+    content: "☑";
+    color: white;
+    margin-right: 5px;
+    margin-left: -20px;
+}
+
+.todoItem:nth-child(2) {
+    background-color: lightgray;
+}
+
+.todoItem:nth-child(2) .deleteBtn {
+    color: white; 
+}
+
+.todoItem:nth-child(3) {
+    background-color: white;
+}
+
+.todoItem:nth-child(3) .deleteBtn {
+    color: white; 
+}
+
+.todoItem input[type="checkbox"] {
+    margin-right: 5px; 
+    float: left; 
+}
