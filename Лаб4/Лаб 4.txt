@@ -1,0 +1,74 @@
+1.
+function maxDifference(arr) {
+    let maxDiff = 0;
+    arr.sort((a, b) => a - b);
+    for (let i = 1; i < arr.length; i++) {
+        maxDiff = Math.max(maxDiff, arr[i] - arr[i - 1]);
+    }
+    return maxDiff;
+}
+
+function removeDuplicates(arr) {
+    return [...new Set(arr)];
+}
+
+function filterByIsDone(arr) {
+    return arr.filter(obj => obj.isDone === true);
+}
+
+// Пример использования:
+const objects = [
+    { id: 1, isDone: true },
+    { id: 2, isDone: false },
+    { id: 3, isDone: true }
+];
+
+console.log(maxDifference([1, 6, 3, 8, 5])); // Выводит: 5
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5])); // Выводит: [1, 2, 3, 4, 5]
+console.log(filterByIsDone(objects)); // Выводит: [{ id: 1, isDone: true }, { id: 3, isDone: true }]
+
+
+2.
+function filterGreaterThan(arr, num) {
+    return arr.filter(element => element > num);
+}
+
+function flattenArray(arr) {
+    return arr.flat(Infinity);
+}
+
+// Пример использования:
+console.log(filterGreaterThan([1, 4, 6, 3, 2], 2)); // Выводит: [4, 6, 3]
+console.log(flattenArray([1, 4, [34, 1, 20], [6, [6, 12, 8], 6]])); // Выводит: [1, 4, 34, 1, 20, 6, 6, 12, 8, 6]
+
+
+3.
+function countPairs(arr) {
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i] + arr[j] === 0) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+function countTriples(arr) {
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            for (let k = j + 1; k < arr.length; k++) {
+                if (arr[i] + arr[j] + arr[k] === 0) {
+                    count++;
+                }
+            }
+        }
+    }
+    return count;
+}
+
+// Пример использования:
+console.log(countPairs([-7, 12, 4, 6, -4, -12, 0])); // Выводит: 2
+console.log(countTriples([-7, 12, 4, 6, -4, -12, 0])); // Выводит: 0
