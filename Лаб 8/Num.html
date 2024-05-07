@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Incremental Timer</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+const isPrime = num => {
+  for (let i = 2, sqrt = Math.sqrt(num); i <= sqrt; i++) {
+    if (num % i === 0) return false;
+  }
+  return num > 1;
+};
+
+const PrimeNumberList = () => {
+  const [primeNumbers, setPrimeNumbers] = useState([2]);
+  
+  useEffect(() => {
+    const timer = setInterval(() => {
+      let nextPrime = primeNumbers[primeNumbers.length - 1] + 1;
+      while (!isPrime(nextPrime)) {
+        nextPrime++;
+      }
+      setPrimeNumbers([...primeNumbers, nextPrime]);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [primeNumbers]);
+
+  return (
+    <div>
+      <h1>Простые числа: {primeNumbers.join(", ")}</h1>
+    </div>
+  );
+};
+const rootElement = document.getElementById('root');
+    ReactDOM.render(<PrimeNumberList />, rootElement);
+  </script>
+</body>
+</html>

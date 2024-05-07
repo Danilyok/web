@@ -1,0 +1,33 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Component Example</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+    <script>
+        // Define a functional component Temperature
+        const Temperature = ({ t }) => {
+            const temperatureStyle = {
+                color: t < 0 ? 'blue' : 'red'
+            };
+
+            return React.createElement("p", { style: temperatureStyle }, `Temperature: ${t}`);
+        };
+
+        
+        ReactDOM.render(
+            React.createElement(Temperature, { t: 451 }),
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>
